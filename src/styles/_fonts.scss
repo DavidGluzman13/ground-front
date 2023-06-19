@@ -1,13 +1,28 @@
 @font-face {
   font-family: "TitilliumWeb";
-  src: url(../../assets/fonts/TitilliumWeb-Regular.ttf) format("truetype");
+  src: url(../assets/fonts/TitilliumWeb-Regular.ttf) format("truetype");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: "TitilliumWeb";
-  src: url(../../assets/fonts/TitilliumWeb-Bold.ttf) format("truetype");
+  src: url(../assets/fonts/TitilliumWeb-Bold.ttf) format("truetype");
   font-weight: 700;
   font-style: normal;
 }
+
+@font-face {
+  font-family: "Tomatoes";
+  src: url(../assets/fonts/Tomatoes-O8L8.ttf) format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "BeautifulPeople";
+  src: url(../assets/fonts/BeautifulPeoplePersonalUse-dE0g.ttf) format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+

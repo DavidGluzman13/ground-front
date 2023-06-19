@@ -5,13 +5,13 @@
 @use "./mixins" as *;
 
 html {
-  background-color: $color-instock-light-grey;
+  background-color: $color-ground-primary;
   // reset
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: $color-instock-black;
+    color: black;
   }
 
   body {
@@ -33,6 +33,7 @@ html {
       font-size: 1.75rem;
       line-height: 2.25rem;
       font-weight: 700;
+      font-family: "Tomatoes", sans-serif;
 
       @include tablet {
         font-size: 2rem;
@@ -71,7 +72,7 @@ html {
       font-size: 0.6875rem;
       line-height: 1rem;
       font-weight: 700;
-      color: $color-instock-slate;
+      color: black;
 
       @include tablet {
         font-size: 0.75rem;

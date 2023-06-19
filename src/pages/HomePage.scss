@@ -1,0 +1,105 @@
+@use "../styles/fonts" as *;
+@use "../styles/mixins" as *;
+@use "../styles/variables" as *;
+@use "../styles/globals" as *;
+
+.home {
+  &__container {
+    margin: 1rem;
+
+    @include tablet {
+      margin: 2rem;
+    }
+
+    @include desktop {
+      @include desktop-centre;
+    }
+  }
+
+  &__slogan {
+    margin: 1rem;
+
+    h1 {
+      font-size: 1.5rem;
+      line-height: 3.5rem;
+      text-align: center;
+    }
+
+    @include tablet {
+      margin: 2rem;
+    }
+
+    @include desktop {
+      @include desktop-centre;
+    }
+  }
+}
+
+.intro-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__text {
+    font-family: "BeautifulPeople";
+    font-size: 1.2rem;
+    border: 2px solid rgb(191, 200, 187, 0.6);
+    background-color: rgb(191, 200, 187, 0.2);
+    border-radius: 10px;
+    padding: 0.5rem;
+    margin: 1rem;
+    @include tablet {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.hero {
+  box-sizing: border-box;
+  border: 2px solid rgb(124, 102, 88, 0.4);
+  border-radius: 10px;
+  margin: 3rem 0;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem;
+
+  &__header {
+    font-size: 1.5rem;
+    line-height: 3.5rem;
+    font-family: "BeautifulPeople";
+  }
+
+  &__image {
+    width: 30%;
+    border-radius: 10px;
+  }
+}
+
+#expandButton {
+  // remove default button styling
+  border: none;
+  background: none;
+  outline: none;
+  font-family: "BeautifulPeople";
+  font-size: 1.5rem;
+  padding: 1rem 1rem;
+  margin: 0 0 1rem 0;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    box-shadow: (0, 0, 0, 0.2);
+    background-color: $color-ground-sage;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .expanded {
+    background-color: $color-ground-darkerwhite;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+}

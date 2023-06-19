@@ -1,0 +1,70 @@
+@use "../../styles/fonts" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/variables" as *;
+@use "../../styles/globals" as *;
+
+.header {
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  @include tablet {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
+
+  @include desktop {
+    @include desktop-centre;
+  }
+
+  &__homebutton {
+    display: flex;
+    justify-content: center;
+
+    @include tablet {
+      width: 60%;
+      justify-content: flex-start;
+    }
+    &-img {
+      width: 60%;
+      padding: 1rem;
+
+      @include tablet {
+        width: 40%;
+        padding: 1rem 2rem;
+      }
+
+      @include desktop {
+        padding: 1rem 0;
+      }
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1rem;
+
+    @include tablet {
+      width: 40%;
+    }
+
+    .navlink {
+      width: 50%;
+      text-align: center;
+
+      @include tablet {
+        width: 50%;
+      }
+
+      .link {
+        font-size: 1.5rem;
+        color: $color-ground-darkgray;
+      }
+    }
+  }
+}
