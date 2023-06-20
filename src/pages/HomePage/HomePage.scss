@@ -1,7 +1,7 @@
-@use "../styles/fonts" as *;
-@use "../styles/mixins" as *;
-@use "../styles/variables" as *;
-@use "../styles/globals" as *;
+@use "../../styles/fonts" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/variables" as *;
+@use "../../styles/globals" as *;
 
 .home {
   &__container {

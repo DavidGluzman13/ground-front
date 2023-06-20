@@ -1,7 +1,7 @@
 // import { Link } from "react-router-dom";
 import "./HomePage.scss";
 import { useState } from "react";
-import cactus from "../assets/images/download.jpeg";
+import cactus from "../../assets/images/download.jpeg";
 
 function HomePage() {
   const [isExpanded, setIsExpanded] = useState(false);

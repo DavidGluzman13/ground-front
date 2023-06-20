@@ -1,8 +1,9 @@
 import "./App.scss";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import Header from "./components/header/Header";
-import Footer from "./components/footer/Footer";
+import HomePage from "./pages/HomePage/HomePage";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+import FeaturesPage from "./pages/FeaturesPage/FeaturesPage";
 
 export default function App() {
   return (
@@ -10,6 +11,7 @@ export default function App() {
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/features" element={<FeaturesPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>
