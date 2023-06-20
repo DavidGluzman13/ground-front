@@ -2,3 +2,49 @@
 @use "../../styles/mixins" as *;
 @use "../../styles/variables" as *;
 @use "../../styles/globals" as *;
+
+.features__daily-log {
+  @include desktop {
+    width: 70%;
+  }
+}
+
+.form {
+  &__label {
+    h2 {
+      margin: 1rem 0;
+    }
+
+    input {
+      margin: 0 0 1rem 0;
+    }
+  }
+}
+
+.elog {
+  border: 2px solid $color-ground-darkblue;
+  border-radius: 5px;
+  width: 100%;
+  padding: 0.8rem 0.5rem 4rem 0.5rem;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
+
+  @include desktop {
+    padding: 0.8rem 0.5rem 7rem 0.5rem;
+  }
+
+  &::placeholder {
+    position: absolute;
+    top: 0.8rem;
+  }
+}
+
+.submit-button {
+  border: none;
+  border-radius: 10px;
+  background-color: $color-ground-darkblue;
+  color: $color-ground-white;
+  width: 100%;
+  padding: 0.5rem;
+  margin: 1rem 0;
+  font-family: "Tomatoes";
+}

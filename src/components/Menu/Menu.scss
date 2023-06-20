@@ -5,6 +5,9 @@
 
 .dropdown {
   &-menu {
+    @include desktop {
+      width: 28%;
+    }
     margin: 1rem 0;
     &__button {
       border: none;
