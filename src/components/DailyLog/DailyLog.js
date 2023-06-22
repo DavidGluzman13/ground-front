@@ -1,28 +1,13 @@
 import "./DailyLog.scss";
+// import Date from "../../utils/Date";
+
 // import Slider from "../Slider/Slider";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import formatDate from "../../utils/Date";
 
 function DailyLog() {
-  // const [selectedOption, setSelectedOption] = useState("");
-
-  // Likert and form handlers
-  // const handleOptionChange = (event) => {
-  //   setSelectedOption(event.target.value);
-  // };
-
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   // Perform any desired action with the selected option
-  //   console.log("Selected option:", selectedOption);
-  // };
-
-  // const handleEmoLog = (event) => {
-  //   setEmoLog(event.target.value);
-  //   setIsEmoLog(true);
-  // };
-
   //------------- Slider --------------------------//
   const navigate = useNavigate();
   const emojiOptions = ["😪", "😐", "🙂", "😀", "😄"];
@@ -30,6 +15,8 @@ function DailyLog() {
   const hungerOptions = ["Starving", "Could eat", "Meh", "Full", "Can't move"]; // Capitalize "Full" for consistency
 
   // setting values
+  const userId = "1"; // setting hardcoded userId for now
+  const [content, setContentLog] = useState("");
   const [feelingValue, setFeelingValue] = useState("");
   const [hungerValue, setHungerValue] = useState("");
   const [energyValue, setEnergyValue] = useState("");
@@ -41,6 +28,7 @@ function DailyLog() {
   const [energyClass, setEnergyClass] = useState("");
 
   // setting validation that the user inputted the answer
+  const [isContentLog, setIsContentLog] = useState(true);
   const [isFeeling, setIsFeeling] = useState(true);
   const [isEnergy, setIsEnergy] = useState(true);
   const [isHunger, setIsHunger] = useState(true);
@@ -53,7 +41,7 @@ function DailyLog() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    let item = [feelingValue, energyValue, hungerValue, sleep];
+    let item = [content, feelingValue, energyValue, hungerValue, sleep];
 
     for (let i in item) {
       if (!item[i]) {
@@ -61,6 +49,9 @@ function DailyLog() {
       }
     }
 
+    if (!content) {
+      setIsContentLog(false);
+    }
     if (!feelingValue) {
       setIsFeeling(false);
     }
@@ -75,10 +66,13 @@ function DailyLog() {
     }
 
     const newLog = {
-      feelingValue,
-      energyValue,
-      hungerValue,
-      sleep,
+      userId,
+      content,
+      feeling: feelingValue,
+      energy: energyValue,
+      hunger: hungerValue,
+      hours_slept: sleep,
+      date_column: new Date(),
     };
 
     console.log(newLog);
@@ -160,6 +154,11 @@ function DailyLog() {
     }
   };
 
+  const handleContentLog = (e) => {
+    setContentLog(e.target.value);
+    setIsContentLog(true);
+  };
+
   const handleFeelingValue = (e) => {
     setFeelingValue(e.target.value);
     setIsFeeling(true);
@@ -168,12 +167,12 @@ function DailyLog() {
     setEnergyValue(e.target.value);
     setIsEnergy(true);
   };
-  const handleHungerValue = (event) => {
-    setHungerValue(event.target.value);
+  const handleHungerValue = (e) => {
+    setHungerValue(e.target.value);
     setIsHunger(true);
   };
-  const handleSleep = (event) => {
-    setSleep(event.target.value);
+  const handleSleep = (e) => {
+    setSleep(e.target.value);
     setIsSleep(true);
   };
 
@@ -184,11 +183,11 @@ function DailyLog() {
           <label className="form__label">
             <h2>Log your thoughts here</h2>
             <input
-              name="emoLog"
-              className="elog"
+              name="content"
+              className="content"
               placeholder="Please enter how you've feeling today..."
-              // onChange={handleEmoLog}
-              // value={emoLog}
+              onChange={handleContentLog}
+              value={content}
             />
           </label>{" "}
           <h2>How do you feel today?</h2>
@@ -269,8 +268,8 @@ function DailyLog() {
           <h2>How much did you sleep?</h2>
           <input
             name="sleep"
-            className={`input ${isSleep ? "" : "error"}`} // Add "error" class when isSleep is false
-            placeholder="0"
+            className="hours" // Add "error" class when isSleep is false
+            placeholder="Type in number of hours slept"
             type="number"
             onChange={handleSleep}
             value={sleep}
@@ -278,7 +277,6 @@ function DailyLog() {
           <button className="submit-button" type="submit">
             Submit
           </button>{" "}
-          {/* Add submit button */}
         </form>
       </div>
     </div>

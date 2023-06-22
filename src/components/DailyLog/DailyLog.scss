@@ -21,7 +21,7 @@
   }
 }
 
-.elog {
+.content {
   border: 2px solid $color-ground-darkblue;
   border-radius: 5px;
   width: 100%;
@@ -134,4 +134,12 @@ input[type="range"]:focus::-moz-range-thumb {
   transition: all 0.5s ease-in-out;
   width: 100px;
   height: 100px;
+}
+
+.hours {
+  border: 2px solid $color-ground-darkblue;
+  border-radius: 5px;
+  padding: 0.5rem 0 0.5rem 0.5rem;
+  width: 50%;
+  margin: 0.5rem 0;
 }
