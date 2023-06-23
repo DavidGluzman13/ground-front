@@ -1,4 +1,5 @@
 import React from "react";
+import "./LineChart.scss";
 import { Line } from "react-chartjs-2";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -21,6 +22,7 @@ function LineChart() {
           obj.date_column = obj.date_column.split("T")[0];
         });
         setLog(response.data);
+        console.log(response.data);
       })
       .catch((error) => {
         if (error.response.status === 404) {
@@ -29,12 +31,28 @@ function LineChart() {
       });
   }, []);
 
-  if(!log) {
-    return <>loading...</>
+  if (!log) {
+    return <>loading...</>;
   }
 
   const dateArray = log.map((obj) => {
     return obj.date_column;
+  });
+
+  const feelingArray = log.map((obj) => {
+    return obj.feeling;
+  });
+
+  const hungerArray = log.map((obj) => {
+    return obj.hunger;
+  });
+
+  const energyArray = log.map((obj) => {
+    return obj.energy;
+  });
+
+  const sleepArray = log.map((obj) => {
+    return obj.hours_slept;
   });
 
   const data = {
@@ -42,34 +60,54 @@ function LineChart() {
     // datasets is an array of objects where each object represents a set of data to display corresponding to the labels above. for brevity, we'll keep it at one object
     datasets: [
       {
-        label: "Popularity of colours",
-        data: [55, 23, 96, 100, 12, 67, 53],
+        label: "Feeling",
+        data: feelingArray,
         // you can set indiviual colors for each bar
         backgroundColor: [
           "rgba(255, 255, 255, 0.6)",
           "rgba(255, 255, 255, 0.6)",
           "rgba(255, 255, 255, 0.6)",
         ],
-        borderWidth: 1,
+        borderColor: "red",
+        fill: false,
+      },
+      {
+        label: "Hunger",
+        data: hungerArray,
+        borderColor: "blue",
+        fill: false,
+      },
+      {
+        label: "Energy",
+        data: energyArray,
+        borderColor: "green",
+        fill: false,
+      },
+      {
+        label: "Sleep",
+        data: sleepArray,
+        borderColor: "yellow",
+        fill: false,
       },
     ],
   };
+
+  const options = {
+    responsive: true,
+    scales: {
+      y: {
+        beginAtZero: true,
+      },
+    },
+  };
+
+
   return (
     <div className="chart-container">
       <h2 style={{ textAlign: "center" }}>Line Chart</h2>
       <Line
         data={data}
-        options={{
-          plugins: {
-            title: {
-              display: true,
-              text: "Users Gained between 2016-2020",
-            },
-            legend: {
-              display: false,
-            },
-          },
-        }}
+        options={options}
       />
     </div>
   );
