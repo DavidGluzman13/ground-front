@@ -27,22 +27,22 @@ function Menu() {
         <ul className="dropdown-options">
           <li onClick={() => handleNavClick("Option 1")}>
             <img src={cactus} alt="small-cactus" />
-            <Link className="dropdown-options__link" to="/features/:id/log">
+            <Link className="dropdown-options__link" to="/features/1/log">
               Emotion Log
             </Link>
           </li>
           <li onClick={() => handleNavClick("Option 2")}>
             <img src={cactus} alt="small-cactus" />
-            <Link className="dropdown-options__link" to="/features/:id/insight">
-              Insight
+            <Link className="dropdown-options__link" to="/features/1/insights">
+              Insights
             </Link>
           </li>
-          <li onClick={() => handleNavClick("Option 3")}>
+          {/* <li onClick={() => handleNavClick("Option 3")}>
             <img src={cactus} alt="small-cactus" />
             <Link className="dropdown-options__link" to="/">
               Explore More
             </Link>
-          </li>
+          </li> */}
         </ul>
       )}
       {selectedNav && (

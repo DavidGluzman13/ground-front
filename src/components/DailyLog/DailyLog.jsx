@@ -1,11 +1,8 @@
 import "./DailyLog.scss";
-// import Date from "../../utils/Date";
-
-// import Slider from "../Slider/Slider";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import formatDate from "../../utils/Date";
+// import formatDate from "../../utils/Date";
 
 function DailyLog() {
   //------------- Slider --------------------------//
