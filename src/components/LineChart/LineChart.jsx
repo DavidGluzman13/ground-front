@@ -62,31 +62,25 @@ function LineChart() {
       {
         label: "Feeling",
         data: feelingArray,
-        // you can set indiviual colors for each bar
-        backgroundColor: [
-          "rgba(255, 255, 255, 0.6)",
-          "rgba(255, 255, 255, 0.6)",
-          "rgba(255, 255, 255, 0.6)",
-        ],
-        borderColor: "red",
+        borderColor: "#a3cfd9",
         fill: false,
       },
       {
         label: "Hunger",
         data: hungerArray,
-        borderColor: "blue",
+        borderColor: "#8ebfa6",
         fill: false,
       },
       {
         label: "Energy",
         data: energyArray,
-        borderColor: "green",
+        borderColor: "#c4b7c5",
         fill: false,
       },
       {
         label: "Sleep",
         data: sleepArray,
-        borderColor: "yellow",
+        borderColor: "#d3c29a",
         fill: false,
       },
     ],
@@ -101,14 +95,10 @@ function LineChart() {
     },
   };
 
-
   return (
     <div className="chart-container">
       <h2 style={{ textAlign: "center" }}>Line Chart</h2>
-      <Line
-        data={data}
-        options={options}
-      />
+      <Line data={data} options={options} />
     </div>
   );
 }
