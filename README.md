@@ -4,7 +4,7 @@
 
 As part of BrainStation's full-stack bootcamp, I am working on my capstone project, where I have been given the challenge of creating a full-stack application within a two-week timeframe. I am utilizing technologies such as create-react-app, react-router, Framer Motion, Chart.js, and SASS for the front end, while the back end consists of a Node/Express backend API and Knex for querying a MySQL database. However, the project is still a work in progress, and there may be changes as I continue to develop it.
 
-[Click here](<add presentation URL>) to watch my demo presentation. 
+[Click here](https://www.canva.com/design/DAFm8LwgN8Q/eA9cm0qniARHnB8dT_5srQ/edit?utm_content=DAFm8LwgN8Q&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton) to watch my demo presentation. 
 
 Thank you for checking it out :)
 
