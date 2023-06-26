@@ -2,33 +2,40 @@ import "./DailyLog.scss";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { motion } from "framer-motion";
 // import formatDate from "../../utils/Date";
 
 function DailyLog() {
   //------------- Slider --------------------------//
   const navigate = useNavigate();
-  const emojiOptions = ["😪", "😐", "🙂", "😀", "😄"];
+  const emojiOptions = ["😪", "🙁", "😐", "🙂", "😄"];
   const energyLevel = ["😴", "🥱", "😐", "😬", "🤪"];
-  const hungerOptions = ["Starving", "Could eat", "Meh", "Full", "Can't move"]; // Capitalize "Full" for consistency
+  const activityOptions = [
+    "Sedentary",
+    "Lightly active",
+    "Moderate",
+    "Very active",
+    "Extremely active",
+  ]; // Capitalize "Full" for consistency
 
   // setting values
   const userId = "1"; // setting hardcoded userId for now
   const [content, setContentLog] = useState("");
   const [feelingValue, setFeelingValue] = useState("");
-  const [hungerValue, setHungerValue] = useState("");
+  const [activityValue, setActivityValue] = useState("");
   const [energyValue, setEnergyValue] = useState("");
   const [sleep, setSleep] = useState("");
 
   // not sure what this does but I guess it sets the class?
   const [feelingClass, setFeelingClass] = useState("");
-  const [hungerClass, setHungerClass] = useState("");
+  const [activityClass, setActivityClass] = useState("");
   const [energyClass, setEnergyClass] = useState("");
 
   // setting validation that the user inputted the answer
   const [isContentLog, setIsContentLog] = useState(true);
   const [isFeeling, setIsFeeling] = useState(true);
   const [isEnergy, setIsEnergy] = useState(true);
-  const [isHunger, setIsHunger] = useState(true);
+  const [isActivity, setIsActivity] = useState(true);
   const [isSleep, setIsSleep] = useState(true);
 
   // set error
@@ -38,7 +45,7 @@ function DailyLog() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    let item = [content, feelingValue, energyValue, hungerValue, sleep];
+    let item = [content, feelingValue, energyValue, activityValue, sleep];
 
     for (let i in item) {
       if (!item[i]) {
@@ -55,8 +62,8 @@ function DailyLog() {
     if (!energyValue) {
       setIsEnergy(false);
     }
-    if (!hungerValue) {
-      setIsHunger(false);
+    if (!activityValue) {
+      setIsActivity(false);
     }
     if (!sleep) {
       setIsSleep(false);
@@ -67,7 +74,7 @@ function DailyLog() {
       content,
       feeling: feelingValue,
       energy: energyValue,
-      hunger: hungerValue,
+      activity: activityValue,
       hours_slept: sleep,
       date_column: new Date(),
     };
@@ -78,7 +85,7 @@ function DailyLog() {
       .then((response) => {
         console.log(response.data);
         alert("Added");
-        navigate("/features/insight");
+        navigate("/features/1/insights");
       })
       .catch((error) => {
         console.error(error);
@@ -129,23 +136,23 @@ function DailyLog() {
     }
   };
 
-  // ------------- Hunger ----------------//
+  // ------------- activity ----------------//
   useEffect(() => {
-    setHungerClass(getHungerImage(hungerValue)); // Remove hardcoded "Starving"
-  }, [hungerValue]); // Include dependency array to run the effect when hungerValue changes
+    setActivityClass(getActivityImage(activityValue)); // Remove hardcoded "Starving"
+  }, [activityValue]); // Include dependency array to run the effect when activityValue changes
 
-  const getHungerImage = (hungerValue) => {
-    switch (hungerValue) {
+  const getActivityImage = (activityValue) => {
+    switch (activityValue) {
       case "0":
-        return "Starving";
+        return "Sedentary";
       case "1":
-        return "Could eat";
+        return "Lightly active";
       case "2":
-        return "Meh";
+        return "Moderate";
       case "3":
-        return "Full";
+        return "Very active";
       case "4":
-        return "Can't move";
+        return "Extremely active";
       default:
         return "";
     }
@@ -164,9 +171,9 @@ function DailyLog() {
     setEnergyValue(e.target.value);
     setIsEnergy(true);
   };
-  const handleHungerValue = (e) => {
-    setHungerValue(e.target.value);
-    setIsHunger(true);
+  const handleActivityValue = (e) => {
+    setActivityValue(e.target.value);
+    setIsActivity(true);
   };
   const handleSleep = (e) => {
     setSleep(e.target.value);
@@ -174,7 +181,12 @@ function DailyLog() {
   };
 
   return (
-    <div className="features__daily-log">
+    <motion.div
+      className="features__daily-log"
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 1 }}
+    >
       <div className="toggle-slider">
         <form onSubmit={handleSubmit}>
           <label className="form__label">
@@ -237,7 +249,7 @@ function DailyLog() {
               ))}
             </ul>
           </div>
-          <h2>How was your hunger?</h2>
+          <h2>How was your activity level today?</h2>
           <div className="container">
             <input
               type="range"
@@ -246,16 +258,18 @@ function DailyLog() {
               min="0"
               max="4"
               step="1"
-              value={hungerValue}
+              value={activityValue}
               autoComplete="on"
-              onChange={handleHungerValue}
+              onChange={handleActivityValue}
             />
-            <div className={`feeling feeling-${hungerClass}`}></div>
+            <div className={`feeling feeling-${activityClass}`}></div>
             <ul className="options">
-              {hungerOptions.map((option, index) => (
+              {activityOptions.map((option, index) => (
                 <li
                   key={index}
-                  className={`option ${index === hungerValue ? "active" : ""}`}
+                  className={`option ${
+                    index === activityValue ? "active" : ""
+                  }`}
                 >
                   {option}
                 </li>
@@ -271,12 +285,17 @@ function DailyLog() {
             onChange={handleSleep}
             value={sleep}
           />
-          <button className="submit-button" type="submit">
+          <motion.button
+            className="submit-button"
+            type="submit"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
             Submit
-          </button>{" "}
+          </motion.button>{" "}
         </form>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

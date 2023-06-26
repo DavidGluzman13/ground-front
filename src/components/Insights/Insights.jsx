@@ -1,5 +1,4 @@
 import "./Insights.scss";
-import Menu from "../../components/Menu/Menu";
 import LineChart from "../../components/LineChart/LineChart";
 import Chart from "chart.js/auto";
 import { CategoryScale } from "chart.js";
@@ -13,7 +12,6 @@ function Insights() {
   });
   return (
     <div className="features">
-      <Menu />
       <LineChart chartData={chartData} />
     </div>
   );

@@ -5,6 +5,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import FeaturesPage from "./pages/FeaturesPage/FeaturesPage";
 import Insights from "./components/Insights/Insights";
+import FullLogs from "./components/FullLogs/FullLogs";
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/features" element={<FeaturesPage />} />
         <Route path="/features/1/insights" element={<Insights />} />
+        <Route path="/full-logs" element={<FullLogs />} />
       </Routes>
       <Footer />
     </BrowserRouter>

@@ -1,7 +1,8 @@
 // import { Link } from "react-router-dom";
 import "./HomePage.scss";
 import { useState } from "react";
-import cactus from "../../assets/images/download.jpeg";
+import { motion } from "framer-motion";
+import AnimatedTextCharacter from "../../components/AnimatedTextCharacter/AnimatedTextCharacter";
 
 function HomePage() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -15,17 +16,27 @@ function HomePage() {
     <div className="home">
       <div className="home__container">
         <div className="intro-box">
-          <div className="hero">
-            <h1 className="hero__header">Ground yourself, find balance within</h1>
-            <img className="hero__image" src={cactus} alt="desert-cactus"/>
-          </div>
-          <button
+          <motion.div
+            className="hero"
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.25 }}
+          >
+            {/* <h1 className="hero__header">
+              Ground yourself, find balance within
+            </h1> */}
+            <AnimatedTextCharacter text="Ground yourself, find balance within" />
+            {/* <img className="hero__image" src={desert} alt="desert"/> */}
+          </motion.div>
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
             id="expandButton"
             className={isExpanded ? "expanded" : ""}
             onClick={toggleTextBox}
           >
             {isExpanded ? "Close back" : "What is it about"}
-          </button>
+          </motion.button>
           <div>
             {isExpanded && (
               <div>

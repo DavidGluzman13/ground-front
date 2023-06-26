@@ -41,7 +41,7 @@
   align-items: center;
 
   &__text {
-    font-family: "BeautifulPeople";
+    font-family: "TitilliumWeb";
     font-size: 1.2rem;
     border: 2px solid rgb(191, 200, 187, 0.6);
     background-color: rgb(191, 200, 187, 0.2);
@@ -55,8 +55,14 @@
 }
 
 .hero {
+  width: 100%;
+  height: 30vh;
+  background: linear-gradient(rgba(50, 50, 50, 0.3), rgba(50, 50, 50, 0.3)),
+    url(../../assets/images/Desert.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
   box-sizing: border-box;
-  border: 2px solid rgb(124, 102, 88, 0.4);
+  // border: 2px solid rgb(124, 102, 88, 0.4);
   border-radius: 10px;
   margin: 3rem 0;
   display: flex;
@@ -67,9 +73,10 @@
   padding: 1.5rem;
 
   &__header {
-    font-size: 1.5rem;
+    font-size: 2rem;
     line-height: 3.5rem;
-    font-family: "BeautifulPeople";
+    font-family: "Tomatoes";
+    color: white;
   }
 
   &__image {

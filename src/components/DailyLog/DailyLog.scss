@@ -41,12 +41,20 @@
 .submit-button {
   border: none;
   border-radius: 10px;
-  background-color: $color-ground-darkblue;
+  background-color: $color-ground-darkbeige;
   color: $color-ground-white;
+  font-size: 1.25rem;
   width: 100%;
-  padding: 0.5rem;
+  padding: 0.3rem;
   margin: 1rem 0;
   font-family: "Tomatoes";
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    box-shadow: (0, 0, 0, 0.2);
+    background-color: $color-ground-darkgray;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
 }
 
 .container {
