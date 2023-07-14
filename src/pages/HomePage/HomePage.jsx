@@ -66,3 +66,18 @@ function HomePage() {
 }
 
 export default HomePage;
+
+
+// Get to do list:
+// 1. Restart the entire process only with typescript
+// 2. Add a new page for the user to see their entries
+// 3. Add a new page for the user to see their profile
+// 4. Add a new page for the user to see their settings
+  // 4.1 Set up a functionality where the user is able to give permission to the therpist as a viewer to see their entries
+// 5. Add a new page for the user to see their stats
+// 6. Add a new page for the user to see their calendar
+// 7. Add a new page for the user to see their journal
+// 8. Add a new page for the user to see their mood
+// 9. Add a new page for the user to see their goals
+// 10. Add a new page for the user to see their achievements
+// 11. Add a new oage for the user to communitcate with thier therpist
